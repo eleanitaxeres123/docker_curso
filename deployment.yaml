@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-curso-deployment  # Cambiado para que cumpla con la RFC 1123
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dockercurso
+  template:
+    metadata:
+      labels:
+        app: dockercurso
+    spec:
+      containers:
+      - name: docker-curso-container  # Cambiado para que cumpla con las reglas de los contenedores
+        image: eijerez/docker_curso
+        ports:
+        - containerPort: 5001
